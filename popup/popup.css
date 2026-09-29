@@ -1,0 +1,84 @@
+:root {
+  color-scheme: dark;
+  --bg: #16181d;
+  --card: #1f2229;
+  --line: #2f333c;
+  --text: #e6e8ec;
+  --muted: #9aa3b2;
+  --accent: #4f9dff;
+  --ok: #3fb950;
+  --warn: #d29922;
+  --bad: #f85149;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  width: 320px;
+  margin: 0;
+  padding: 12px;
+  font: 13px/1.45 system-ui, "Segoe UI", "Microsoft JhengHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.title { font-size: 14px; font-weight: 700; letter-spacing: .3px; }
+
+/* 開關 */
+.switch { position: relative; width: 40px; height: 22px; flex: none; cursor: pointer; }
+.switch input { position: absolute; opacity: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+.track {
+  position: absolute; inset: 0; border-radius: 999px;
+  background: #3a3f4a; transition: background .15s;
+}
+.thumb {
+  position: absolute; top: 3px; left: 3px; width: 16px; height: 16px;
+  border-radius: 50%; background: #fff; transition: transform .15s;
+}
+.switch input:checked + .track { background: var(--ok); }
+.switch input:checked + .track .thumb { transform: translateX(18px); }
+
+/* 狀態 */
+.status {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin-bottom: 10px;
+  color: var(--muted);
+  font-size: 12px;
+  word-break: break-all;
+}
+.status b { color: var(--text); }
+.status .tag { color: var(--ok); }
+.status .tag.bad { color: var(--bad); }
+
+/* 選項 */
+.options { display: flex; flex-direction: column; gap: 2px; }
+.options label {
+  display: flex; gap: 8px; align-items: flex-start;
+  padding: 6px; border-radius: 6px; cursor: pointer;
+}
+.options label:hover { background: #1c1f26; }
+.options input { margin: 2px 0 0; accent-color: var(--accent); flex: none; }
+.options span { display: flex; flex-direction: column; }
+.options em { color: var(--muted); font-style: normal; font-size: 11px; }
+
+/* 按鈕 */
+footer { display: flex; gap: 6px; margin-top: 12px; }
+button {
+  flex: 1; padding: 7px 8px; border-radius: 6px; cursor: pointer;
+  border: 1px solid var(--line); background: #262a33; color: var(--text);
+  font: inherit; font-size: 12px;
+}
+button:hover { background: #2f343f; }
+button:active { transform: translateY(1px); }
+button.ghost { background: transparent; color: var(--muted); }
+button:disabled { opacity: .45; cursor: not-allowed; }

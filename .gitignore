@@ -1,0 +1,15 @@
+# 編輯器 / 系統
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 打包產物
+*.zip
+*.crx
+*.pem
+
+# 暫存
+*.log
+.vscode/
+.idea/
+node_modules/

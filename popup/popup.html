@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <title>missav no stop</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <div class="title">missav no stop</div>
+    <label class="switch" title="總開關（快捷鍵 Alt+Shift+P）">
+      <input type="checkbox" id="enabled">
+      <span class="track"><span class="thumb"></span></span>
+    </label>
+  </header>
+
+  <div id="status" class="status">正在讀取目前分頁狀態…</div>
+
+  <section class="options">
+    <label><input type="checkbox" data-key="blockEvents"><span>阻擋可見度／失焦事件<em>visibilitychange、blur、pagehide…</em></span></label>
+    <label><input type="checkbox" data-key="blockPause"><span>阻擋 pause() 呼叫<em>網站主動暫停時忽略</em></span></label>
+    <label><input type="checkbox" data-key="autoResume"><span>背景時自動恢復播放<em>被停掉就自動 play()</em></span></label>
+    <label><input type="checkbox" data-key="muteFallback"><span>播放失敗時靜音重試<em>繞過自動播放限制</em></span></label>
+    <label><input type="checkbox" data-key="allowUserPause"><span>允許我手動暫停<em>點播放器不會被強制繼續</em></span></label>
+    <label><input type="checkbox" data-key="blockLoad"><span>阻擋 load()<em>進階：可能影響切換畫質</em></span></label>
+    <label><input type="checkbox" data-key="keepTimerAlive"><span>背景計時器保活<em>進階：極小音量訊號</em></span></label>
+    <label><input type="checkbox" data-key="showBadge"><span>顯示頁面內小徽章<em>右下角顯示播放狀態</em></span></label>
+  </section>
+
+  <footer>
+    <button id="resume">立即恢復播放</button>
+    <button id="reload">重新載入此頁</button>
+    <button id="reset" class="ghost">重設</button>
+  </footer>
+
+  <script src="../src/defaults.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

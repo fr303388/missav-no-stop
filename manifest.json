@@ -1,0 +1,50 @@
+{
+  "manifest_version": 3,
+  "name": "missav no stop",
+  "version": "1.0.0",
+  "description": "分頁切到背景 / 視窗失焦時，網頁影片不會被暫停。偽裝可見度並攔截 pause()，支援多種選項。",
+  "minimum_chrome_version": "111",
+  "permissions": ["storage", "tabs"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "missav no stop",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/page.js"],
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_about_blank": true,
+      "world": "MAIN"
+    },
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/defaults.js", "src/content.js"],
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_about_blank": true,
+      "world": "ISOLATED"
+    }
+  ],
+  "commands": {
+    "toggle-enabled": {
+      "suggested_key": { "default": "Alt+Shift+P" },
+      "description": "切換防暫停總開關"
+    }
+  }
+}
